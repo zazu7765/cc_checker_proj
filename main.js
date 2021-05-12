@@ -24,11 +24,68 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 
 // Add your functions below:
+//we use the luhn algorithm to validate the credit card
+//https://en.wikipedia.org/wiki/Luhn_algorithm#Description
+function validateCred(arr) {
+  let total = 0;
+  for (let i = arr.length-1; i >= 0; i--) {
+    let cValue = arr[i]
+    if ((arr.length-1-i) % 2 === 1) {
+      cValue *= 2;
+      if (cValue > 9) {
+        cValue -= 9;
+      }
+    }
+    total += cValue;
+  }
 
+  return total % 10 === 0;
 
+}
+//console.log(validateCred(valid1));
+//we use this to return all invalid cards
+const findInvalidCards=arr=>{
+    invalid=[];
+    arr.forEach(card => {
+       if(!validateCred(card)){
+           invalid.push(card);
+       } 
+    });
+    return invalid;
+}
+//console.log(findInvalidCards([valid1,valid2,valid3,valid4,valid5]));
+//console.log(findInvalidCards([invalid1,invalid2,invalid3,invalid4,invalid5]));
 
+//this logs the corporation that the card belongs to
+function idInvalidCardCorps(invalid) {
+  const corps = [];
+  for (let i = 0; i < invalid.length; i++) {
+    switch (invalid[i][0]) {
+      case 3:
+        if (corps.indexOf('Amex') === -1) {
+          corps.push('Amex');
+        }
+        break
+      case 4:
+        if (corps.indexOf('Visa') === -1) {
+          corps.push('Visa');
+        }
+        break
+      case 5:
+        if (corps.indexOf('Mastercard') === -1) {
+          corps.push('Mastercard');
+        }
+        break
+      case 6:
+        if (corps.indexOf('Discover') === -1) {
+          corps.push('Discover');
+        }
+        break
+      default: console.log('Company not found');
+    }
+  }
+  return corps;
+}
 
-
-
-
-
+//console.log(idInvalidCardCorps([invalid1]))
+//console.log(idInvalidCardCorps(batch));
