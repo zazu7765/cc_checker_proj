@@ -38,8 +38,8 @@ const batch = [
 	mystery5
 ];
 //selfmade function: format Strings to array
-function formatString(string){
-  return string.split("");
+function formatString(string) {
+	return string.split('');
 }
 
 // Add your functions below:
@@ -108,5 +108,5 @@ function idCardCorps(invalid) {
 
 //console.log(idInvalidCardCorps([invalid1]))
 //console.log(idInvalidCardCorps(batch));
-exampleCard = formatString("5337560189775741"/*this is a random card that does not work */)
+exampleCard = formatString('5337560189775741' /*this is a random card that does not work */);
 console.log(idCardCorps(batch));
