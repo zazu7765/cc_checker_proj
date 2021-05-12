@@ -37,6 +37,10 @@ const batch = [
 	mystery4,
 	mystery5
 ];
+//selfmade function: format Strings to array
+function formatString(string){
+  return string.split("");
+}
 
 // Add your functions below:
 //we use the luhn algorithm to validate the credit card
@@ -71,7 +75,7 @@ const findInvalidCards = (arr) => {
 //console.log(findInvalidCards([invalid1,invalid2,invalid3,invalid4,invalid5]));
 
 //this logs the corporation that the card belongs to
-function idInvalidCardCorps(invalid) {
+function idCardCorps(invalid) {
 	const corps = [];
 	for (let i = 0; i < invalid.length; i++) {
 		switch (invalid[i][0]) {
@@ -104,3 +108,5 @@ function idInvalidCardCorps(invalid) {
 
 //console.log(idInvalidCardCorps([invalid1]))
 //console.log(idInvalidCardCorps(batch));
+exampleCard = formatString("5337560189775741"/*this is a random card that does not work */)
+console.log(idCardCorps(batch));
